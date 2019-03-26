@@ -11,7 +11,7 @@ using namespace std;
  the PrintMenu() function. (4 pts)
  */
 
- int GetNumofNonWSCharacters(string nonWhiteSpace){
+ int GetNumOfNonWSCharacters(string nonWhiteSpace){
 
  unsigned int i;
 
@@ -175,7 +175,7 @@ string PrintMenu(string sentence){
             exit(0);
             break;
         case 'c':
-            cout << "Number of non-whitespace characters: " << GetNumofNonWSCharacters(sentence) << endl;
+            cout << "Number of non-whitespace characters: " <<  GetNumOfNonWSCharacters(sentence) << endl;
             cout << endl;
             break;
         case 'w':
@@ -184,8 +184,7 @@ string PrintMenu(string sentence){
             break;
         case 'f':
             cout << "Enter a word or phrase to be found:" << endl;
-            cin >> wordFound;
-            cin.ignore();
+            getline(cin, wordFound);
             cout << "\"" << wordFound <<  "\"" << " instances: " << FindText(wordFound, sentence) << endl;
             cout << endl;
             break;
@@ -205,6 +204,7 @@ string PrintMenu(string sentence){
             cin.ignore();
             cout << endl;
             break;
+
         }
 
         return sentence;
@@ -229,3 +229,4 @@ int main()
 
     return 0;
 }
+
