@@ -1,4 +1,5 @@
 #include <cassert>
+#include <iostream>
 #include "pharmacy.hpp"
 #include "pharmacy.cpp"
 
@@ -16,12 +17,12 @@ int main()
     assert(InStock("ibuprophen") == true);    //fail
 	// At least 6 test vectors
 	cout << "\tTesting OkToAdminister" << endl;
-    assert(OkToAdminister("Mekamibeta", 24, 8.5) == true) //pass
-    assert(OkToAdminister("Stawpsdacauf", 1, 8.5) == false) //pass
-    assert(OkToAdminister("Stawpsdacauf", 2, 8.5) == true) //pass
-    assert(OkToAdminister("Idontwananoes", 2, 8.5) == false) //pass
-    assert(OkToAdminister("Idontwananoes", 3, 8.5) == true) //pass
-    assert(OkToAdminister("Idontwananoes", 3, 8.5) == false) //fail
+    assert(OkToAdminister("Mekamibeta", 24, 8.5) == true); //pass
+    assert(OkToAdminister("Stawpsdacauf", 1, 8.5) == false); //pass
+    assert(OkToAdminister("Stawpsdacauf", 2, 8.5) == true); //pass
+    assert(OkToAdminister("Idontwananoes", 2, 8.5) == false); //pass
+    assert(OkToAdminister("Idontwananoes", 3, 8.5) == true); //pass
+    assert(OkToAdminister("Idontwananoes", 3, 8.5) == false); //fail
 	// At least 6 test vectors
 	cout << "\tTesting Dosage" << endl;
     assert(Dosage("Mekamibeta", 8.4) == 2.5); //pass
@@ -34,6 +35,7 @@ int main()
     assert(Dosage("Idontwananoes", 8.5) == 4.75); //pass
 	// At least 1 test vector
 	cout << "\tTesting MakeLabel" << endl;
-    assert(MakeLabel("Mekamibeta", "rebeka", 45, "") == "rebeka\nMekamibeta\nAt bedtime take 23.00 mgs."); //pass
+	string label;
+    assert(MakeLabel("", "", 0.0, "")); //pass
 }
 
