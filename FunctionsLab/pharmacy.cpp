@@ -1,3 +1,9 @@
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+#include <stdio.h>
+#include "pharmacy.hpp"
+
 using namespace std;
 
 // @brief checks the invitory for available medications
@@ -9,7 +15,7 @@ using namespace std;
 //		  false : out of stock
 
 /* InStock definition */
-bool InStock (const string& medication){
+inline bool InStock (const string& medication){
     bool stock = false;
 
     if (medication == medications_in_stock[0]){
@@ -36,12 +42,12 @@ bool InStock (const string& medication){
 //		  false: medication should not be given to patient
 
 /* OkToAdminister definition */
-bool OkToAdminister (const string& medication, int age, double weight){
+inline bool OkToAdminister (const string& medication, int age, double weight){
     bool administer = false;
-    if (medication == medications_in_stock[0]){ //Stawpsdacauf
+    if (medication == medications_in_stock[0]){ //Mekamibeta
         administer = true;
     }
-    else if (medication == medications_in_stock[1] && age > 1){ //Mekamibeta
+    else if (medication == medications_in_stock[1] && age > 1){ //Stawpsdacauf
         administer = true;
     }
     else if (medication == medications_in_stock[2] && age > 2 && weight >= 8.5){ //Idontwananoes
@@ -66,7 +72,7 @@ bool OkToAdminister (const string& medication, int age, double weight){
 // @return double - the medication dosage in milligrams
 
 /* Dosage definition */
-double Dosage (const string& medication, double weight){
+inline double Dosage (const string& medication, double weight){
     double returnDosage;
     if (medication == medications_in_stock[0]){ //Mekamibeta
         if (weight < 8.5){
@@ -95,7 +101,7 @@ double Dosage (const string& medication, double weight){
 //	in name - the patient's name
 //	out weight - the completed label
 
-void MakeLabel(const string& medication, const string& name, double weight, string& label)
+inline void MakeLabel(const string& medication, const string& name, double weight, string& label)
 {
 	const int DOSAGE_STR_LENGTH = 6;
 	char dos[DOSAGE_STR_LENGTH];
@@ -105,3 +111,4 @@ void MakeLabel(const string& medication, const string& name, double weight, stri
 	cout << endl << label;
 
 }
+
