@@ -1,4 +1,3 @@
-#include "pharmacy.hpp"
 using namespace std;
 
 // @brief checks the invitory for available medications
@@ -8,6 +7,7 @@ using namespace std;
 //
 // @return bool - true: in stock
 //		  false : out of stock
+
 /* InStock definition */
 bool InStock (const string& medication){
     bool stock = false;
@@ -34,17 +34,17 @@ bool InStock (const string& medication){
 //
 // @return bool - true: medication is ok to give to patient
 //		  false: medication should not be given to patient
-/* OkToAdminister definition */
 
+/* OkToAdminister definition */
 bool OkToAdminister (const string& medication, int age, double weight){
     bool administer = false;
-    if (medication == medications_in_stock[0]){
+    if (medication == medications_in_stock[0]){ //Stawpsdacauf
         administer = true;
     }
-    else if (medication == medications_in_stock[1] && age > 1){
+    else if (medication == medications_in_stock[1] && age > 1){ //Mekamibeta
         administer = true;
     }
-    else if (medication == medications_in_stock[2] && age > 2 && weight > 8.5){
+    else if (medication == medications_in_stock[2] && age > 2 && weight >= 8.5){ //Idontwananoes
         administer = true;
     }
     else{
@@ -63,21 +63,29 @@ bool OkToAdminister (const string& medication, int age, double weight){
 //	in medication - the prescribed medication name
 //	in weight - the patient's weight in kilograms
 //
-// @return int - the medication dosage in milligrams
+// @return double - the medication dosage in milligrams
+
 /* Dosage definition */
-
-int Dosage (const string& medication, double weight){
-
-    int dosageCalculation;
-
-
-    if (medication == medications_in_stock[1]){
-        dosageCalculation = weight;
+double Dosage (const string& medication, double weight){
+    double returnDosage;
+    if (medication == medications_in_stock[0]){ //Mekamibeta
+        if (weight < 8.5){
+            returnDosage = 2.5;
         }
-
-    cout << dosageCalculation;
-    return dosageCalculation;
-
+        else if (weight >= 8.5 && weight < 45){
+            returnDosage = 0.5 * weight;
+        }
+        else if (weight >= 45){
+            returnDosage = 23;
+        }
+    }
+    else if (medication == medications_in_stock[1]){ //Stawpsdacauf
+        returnDosage = weight;
+    }
+    else if (medication == medications_in_stock[2]){ //Idontwananoes
+        returnDosage = 4.75;
+    }
+    return returnDosage;
 }
 
 // @brief puts together patient and medicine information for labeling
@@ -86,7 +94,7 @@ int Dosage (const string& medication, double weight){
 //	in medication - the prescribed medication name
 //	in name - the patient's name
 //	out weight - the completed label
-//
+
 void MakeLabel(const string& medication, const string& name, double weight, string& label)
 {
 	const int DOSAGE_STR_LENGTH = 6;
@@ -97,4 +105,3 @@ void MakeLabel(const string& medication, const string& name, double weight, stri
 	cout << endl << label;
 
 }
-
