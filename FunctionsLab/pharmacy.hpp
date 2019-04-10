@@ -1,5 +1,7 @@
 #ifndef PHARMACY_HPP_INCLUDED
 #define PHARMACY_HPP_INCLUDED
+#include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -41,4 +43,5 @@ double Dosage(const std::string& medication, double weight);
 void MakeLabel(const std::string& medication, const std::string& name, double weight, std::string& label);
 
 #endif // PHARMACY_HPP_INCLUDED
+
 
