@@ -30,7 +30,7 @@ bool OkToAdminister (const std::string& medication, int age, double weight);
 //	in weight - the patient's weight in kilograms
 //
 // @return int - the medication dosage in milligrams
-int Dosage(const std::string& medication, double weight);
+double Dosage(const std::string& medication, double weight);
 // @brief puts together patient and medicine information for labeling
 //
 // @params
@@ -41,3 +41,4 @@ int Dosage(const std::string& medication, double weight);
 void MakeLabel(const std::string& medication, const std::string& name, double weight, std::string& label);
 
 #endif // PHARMACY_HPP_INCLUDED
+
