@@ -6,32 +6,6 @@
 #include "pharmacy.cpp"
 
 using namespace std;
-/*
-
-int Dosage (const string& medication, double weight){
-    int returnDosage;
-    if (medication == medications_in_stock[0]){ //Mekamibeta
-        if (weight < 8.5){
-            returnDosage = 2.5;
-        }
-        else if (weight >= 8.5 && weight < 45){
-            returnDosage = 0.5 * weight;
-        }
-        else if (weight >= 45){
-            returnDosage = 23;
-        }
-    }
-    else if (medication == medications_in_stock[1]){ //Stawpsdacauf
-        returnDosage = weight;
-    }
-    else if (medication == medications_in_stock[2]){ //Idontwananoes
-        returnDosage = 4.75;
-    }
-    cout << returnDosage;
-    return returnDosage;
-}
-
-*/
 
 // This is your Pharmacy application driver
 int main()
@@ -58,7 +32,6 @@ int main()
 
     InStock(patientMedication);
     OkToAdminister(patientMedication, patientAge, patientWeight);
-   // Dosage(patientMedication, patientWeight);
     MakeLabel(patientMedication, patientName, patientWeight, labelString);
 
 
