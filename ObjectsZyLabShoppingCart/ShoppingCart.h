@@ -1,4 +1,10 @@
 /*
+
+command to run:
+
+g++ ItemToPurchase.cpp main.cpp ShoppingCart.cpp -Wall -o a.out
+
+
 Create three new files:
 
 ShoppingCart.h - Class declaration
@@ -38,13 +44,17 @@ PrintDescriptions()
 Outputs each item's description.
 */
 
+
 #ifndef ShoppingCart_H
 #define ShoppingCart_H
 
 #include <iostream>
 #include <string>
+#include <vector>
 
-using namespace std;
+#include "ItemToPurchase.h"
+
+
 /*
 Default constructor
 Parameterized constructor which takes the customer name and date as parameters (1 pt)
@@ -55,19 +65,21 @@ string currentDate - Initialized in default constructor to "January 1, 2016"
 vector < ItemToPurchase > cartItems
 
 */
+
+
 class ShoppingCart{
 	public:
 		ShoppingCart();
 		ShoppingCart(string customer, string date);
 
 		//accessors
-		string GetCustomerName();
-		string GetDate();
+		string GetCustomerName() const;
+		string GetDate() const;
 
 		//member functions
 
 		//Adds an item to cartItems vector. Has parameter ItemToPurchase. Does not return anything.
-		void AddItem(std::vector<ItemToPurchase> items);
+		void AddItem(ItemToPurchase object);
 
 		//Removes item from cartItems vector. Has a string (an item's name) parameter. Does not return anything.
 		//If item name cannot be found, output this message: Item not found in cart. Nothing removed.
@@ -79,13 +91,13 @@ class ShoppingCart{
 		If not, modify item in cart.
 		If item cannot be found (by name) in cart, output this message: Item not found in cart. Nothing modified.
 		*/
-		void ModifyItem(std::vector<ItemToPurchase> cartItems);
+		void ModifyItem(ItemToPurchase object);
 
 		//Returns quantity of all items in cart. Has no parameters.
-		int GetNumItemsInCart();
+		int GetNumItemsInCart() const;
 
 		//Determines and returns the total cost of items in cart. Has no parameters.
-		int GetCostOfCart();
+		int GetCostOfCart() const;
 
 		//Outputs total of objects in cart.
 		//If cart is empty, output this message: SHOPPING CART IS EMPTY
