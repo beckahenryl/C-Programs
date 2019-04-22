@@ -1,8 +1,15 @@
 #include <iostream>
+#include <vector>
 #include <string>
-#include <ShoppingCart.h>
+#include <cstdlib>
+#include <stdlib.h>
 
 using namespace std;
+
+
+#include "ItemToPurchase.h"
+#include "ShoppingCart.h"
+
 
 /*
 
@@ -32,7 +39,7 @@ Choose an option:
 
 */
 
-void PrintMenu(ShoppingCart param){
+void PrintMenu(ShoppingCart obj){
 	char userPrompt;
 
 	do{
@@ -41,51 +48,57 @@ void PrintMenu(ShoppingCart param){
 		cout << endl;
 
 		cout << "Choose an option:" << endl;
-		getline(cin, userPrompt);
+		cin >> userPrompt;
 
 		switch(userPrompt){
-			//Add item to cart
 			case 'a':
+			{
+				ItemToPurchase objectOfPurchase;
+				obj.AddItem(objectOfPurchase);
+			}
 			break;
-
-			//Remove item from cart
 			case 'd':
+			{
+				string nameItem;
+				obj.RemoveItem(nameItem);
+			}
+				
 			break;
 
-			//Change item quantity
 			case 'c':
+			{
+				ItemToPurchase forChangingQuantity;
+				obj.ModifyItem(forChangingQuantity);
+			}
+				
 			break;
 
-			//Output items' descriptions
 			case 'i':
+			{
+				obj.PrintDescriptions();
+			}
 			break;
 
-			//Output shopping cart
 			case 'o':
-				/*
-
-				OUTPUT SHOPPING CART
-				John Doe's Shopping Cart - February 1, 2016
-				Number of Items: 8
-
-				Nike Romaleos 2 @ $189 = $378
-				Chocolate Chips 5 @ $3 = $15
-				Powerbeats 2 Headphones 1 @ $128 = $128
-
-				Total: $521
-				*/
-
+			{
+				obj.PrintTotal();
+			}
 			break;
 
-			//quit
 			case 'q':
+			{
 				exit(0);
+			}
             break;
 
             default:
+            {
             	cin.ignore();
             	cout << "Incorrect Input: " << endl;
-            	getline(cin, userPrompt);
+            	cin >> userPrompt;
+            	cout << endl;
+            }
+            	
             break;
 
 		}
@@ -127,8 +140,7 @@ int main(){
 	cout << "Customer name: " << object.GetCustomerName() << endl;
 	cout << "Today's date: " << object.GetDate() << endl;
 
-
-
+	PrintMenu(object);
 
 
 	return 0;
